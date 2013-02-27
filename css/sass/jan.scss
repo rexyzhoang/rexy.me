@@ -1,0 +1,232 @@
+@import "main";
+@import "compass";
+@import "compass/css3/";
+@import "animation";
+//@import "animation/animate";
+
+//================================================
+// Website theme: Color glossary                
+//================================================
+$bg-color: #000000; //#300A24;
+$link-color: #F8FB46; //yellow
+$text-color: #fff; // white
+$version-color: #000;
+$cmd-result: #F8FB46; // yellow
+
+$text-size: 21px;
+$footer-size: 14px;
+$site-margin: 8px;
+
+a,
+a:visited {
+    color: transparent;
+    text-decoration: underline;
+    @include transition(color 0.6s ease-in);
+    &:hover {
+        color: lighten($link-color, 40%);
+    }
+}
+
+blink {
+    @include animation(blink 1s infinite);
+}
+
+/** Container **/
+.ie .terminal-wrapper,
+.ie .site-info {
+    display: none;
+}
+#home {
+    background: $bg-color;
+    color: $text-color;
+	overflow: hidden;
+    margin: $site-margin;
+    width: 100%;
+    height: 100%;
+    background: $bg-color url('../img/sky-stars.png') no-repeat center 20px;
+}
+
+#moon {
+    position: absolute;
+    z-index: 3;
+//    background: url('../img/sound-icon.png') no-repeat 99% top;
+}
+
+// Fireworks
+#library {
+  display: none;
+}
+canvas {
+  -webkit-transform: translateZ(0);
+}
+#fireworks {
+    position: absolute;
+    top: 0;
+    z-index: 2;
+//    border: 10px solid red;
+}
+
+.site-info,
+.terminal-wrapper {
+    position: relative;
+    z-index: 3;
+}
+.terminal-wrapper,
+.cmd-info {
+    @include animation(text-blur 3s infinite, text-blink 5s infinite);
+}
+.terminal {
+    font: {
+//        family: "Fixedsys", monospace;
+        family: Consolas, "Bitstream Vera Sans Mono", "Andale Mono", Monaco, "DejaVu Sans Mono", "Lucida Console", monospace;
+        size: $text-size;
+    }
+    color: $cmd-result;
+//    height: 400px;
+//    overflow: auto;
+}
+    .command {
+        color: $text-color;
+        &:before {
+            content: "rexy.me$ ";
+        }
+    }
+
+
+/** Navigation **/
+nav.primary {
+    li {
+        display: block;
+    }
+    a {
+        text-decoration: underline;
+        cursor: pointer;
+    }
+}
+
+dt {
+    display: inline-block;
+    width: 150px;
+}
+    dt:before {
+        content: "<"
+    }
+    dt:after {
+        content: ">"
+    }
+dd {
+    display: inline;
+}
+    dd:after {
+        content: "\A";
+        white-space: pre;
+    }
+
+// chrome message 
+.chrome-msg {
+    text-align: center;
+    display: none;
+    .e-msg {
+        background: #470E6B;
+        position: fixed;
+        z-index: 4;
+        width: 100%;
+        bottom: 20%;
+        padding: 10px;
+        font-weight: bold;
+    }
+}
+
+// Footer
+.site-info,
+.chrome-msg {
+    a {
+        color: $link-color;
+    }
+}
+.cmd-info {
+    font-size: 14px;
+    span {
+        background: white;
+        color: $version-color;
+        padding: 3px 10px;
+        cursor: help;
+        @include transition(background 0.5s linear 0s);
+        &:hover {
+            background: darken($version-color, 10%);
+        }
+    }
+}
+.cmd-info,
+.colophon {
+    position: fixed;
+    bottom: 10px;
+}
+.colophon {
+    right: $site-margin;
+    font-size: $footer-size;
+}
+    .thanks {
+        position: relative;
+        display: inline-block;
+        div {
+            display: none;
+            position: absolute;
+            top: -150px;
+            left: -140px;
+            width: 320px;
+        }
+        p {
+            margin: 0 0 0.4em;
+        }
+        &:hover div {
+            display: block;
+        }
+    }
+
+.fb_edge_comment_widget {
+    top: -210px !important;
+}
+
+// Animation
+@include keyframes(blink) {
+  	0% { opacity: 0; }
+	25% { opacity: 0; }
+	25.1% { opacity: 1; }
+	100% { opacity: 1; }  
+} 
+@include keyframes(text-blur) {
+	0%, 50%, 90%, 100% { text-shadow: $link-color 0 0 1px; }
+	60%, 80% { text-shadow: $link-color 0 0 2px; }
+	70% { text-shadow: $link-color 0 0 5px; }
+}
+
+@include keyframes(text-blink) {
+	0% {
+		@include skewX(0deg);
+	}
+	20% {
+		@include skewX(0deg)
+	}
+	21% {
+		@include skewX(-6deg)
+	}
+	35% {
+		opacity: 1;
+		@include skewX(0deg)
+	}
+	35.5% {
+		opacity: .3;
+		@include skewX(80deg)
+	}
+	36% {
+		@include skewX(-55deg)
+	}
+	36.5% {
+		opacity: 1;
+		@include skewX(0deg)
+	}
+	100% {
+		@include skewX(0deg)
+	}
+}
