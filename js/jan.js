@@ -6,6 +6,9 @@
                 lines of codes
     Note:   Should refactor this code asap
             (39 & 123 lines of CSS & JS codes respectively.)
+    # Possible improvement:
+    # 1. Sound on/off
+    # 2. Text effects
     Rooms for improvement:
     + Auto br
     + Click when the "next" command is displaying... => small error
@@ -13,6 +16,7 @@
     + Command fire once only: FIXED
     + Remove current command: start from the prev
     + Auto type text function: GOOD
+
 */
 
 // Browser detection
