@@ -32,6 +32,48 @@ blink {
     @include animation(blink 1s infinite);
 }
 
+.logo {
+    font: bold 3em/90% "Lucida Grande"; 
+//    330%
+    position: relative;
+//    width: 270px;
+//    border: 1px solid;
+    overflow: hidden;
+    span {
+        background: url(../img/tearsdrop2313.png) repeat-x;
+        position: absolute;
+        display: block;
+        width: 100%;
+        height: 50px;
+    }
+    .tear {
+        background: url(../img/tear.png) no-repeat 3em -15px;
+        @include animation(tear-drop 12s infinite);
+        top: 0;
+    }
+    .texture {
+        background: url(../img/pattern-zebra.png) repeat-x;
+    }
+}
+.ded {
+//    width: 350px;
+    font-size: 14px;
+}
+
+#sun {
+    position: absolute;
+    top: 0;
+//    border: 1px solid white;
+}
+
+.sun {
+    background: #fff;
+    @include animation(sun-rise 12s infinite);
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+}
+
 /** Container **/
 .ie .terminal-wrapper,
 .ie .site-info {
@@ -56,25 +98,6 @@ blink {
     
 }
 
-#moon {
-    position: absolute;
-    z-index: 3;
-//    background: url('../img/sound-icon.png') no-repeat 99% top;
-}
-
-// Fireworks
-#library {
-  display: none;
-}
-canvas {
-  -webkit-transform: translateZ(0);
-}
-#fireworks {
-    position: absolute;
-    top: 0;
-    z-index: 2;
-//    border: 10px solid red;
-}
 
 .site-info,
 .terminal-wrapper {
@@ -199,6 +222,10 @@ dd {
 }
 
 // Animation
+@include keyframes(tear-drop) {
+    0% { top: 0%; }
+    100% { top: 100%}
+}
 @include keyframes(blink) {
   	0% { opacity: 0; }
 	25% { opacity: 0; }
@@ -210,7 +237,6 @@ dd {
 	60%, 80% { text-shadow: $link-color 0 0 2px; }
 	70% { text-shadow: $link-color 0 0 5px; }
 }
-
 @include keyframes(text-blink) {
 	0% {
 		@include skewX(0deg);
