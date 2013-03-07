@@ -1,3 +1,10 @@
+var f = document.getElementById('foo');
+document.addEventListener('mousemove', function(ev){
+    f.style.left = (ev.clientX-25)+'px';
+    f.style.top = (ev.clientY-25)+'px';
+},false);    
+
+
     var canvas = document.getElementById('sun');
     canvas.width = $(window).width();
     canvas.height = $(window).height();

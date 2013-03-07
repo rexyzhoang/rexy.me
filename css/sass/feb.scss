@@ -36,7 +36,7 @@ blink {
     font: bold 3em/90% "Lucida Grande"; 
 //    330%
     position: relative;
-//    width: 270px;
+    width: 270px;
 //    border: 1px solid;
     overflow: hidden;
     span {
@@ -58,6 +58,43 @@ blink {
 .ded {
 //    width: 350px;
     font-size: 14px;
+}
+
+.heart {
+     position: relative; width: 60px; height: 54px;
+     @include transition(all 1s);
+     &:before,
+     &:after {
+        position: absolute;
+        content: "";
+        left: 30px; top: 0;
+        width: 30px;
+        height: 48px;
+        background: #80696A;   
+        border-radius: 50px 50px 0 0;
+        @include transform(rotate(-45deg));
+        @include transform-origin(0,100%);
+     }
+     &:after {
+        left: 0;
+        @include transform(rotate(45deg));
+        @include transform-origin(100%,100%);
+     }
+}
+
+#foo{
+border-radius:50px;
+width:50px;
+height:50px;
+background:#c00;
+position:absolute;
+top:0;
+left:0;
+-moz-transition: all 1s; 
+-webkit-transition: all 1s;  
+-ms-transition: all 1s;  
+-o-transition: all 1s;  
+transition: all 1s;  
 }
 
 #sun {
